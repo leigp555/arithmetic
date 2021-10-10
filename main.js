@@ -31,21 +31,32 @@ const reverse = (number) => {
 
 
 //数组排序  方法一
-let arr=[]
+// let arr=[]
+// const sort=(number)=> {
+//     if (number.length > 1) {
+//         let minValue = min(number);
+//         let minIndex = index(minValue, number)
+//         number.splice(minIndex, 1)
+//         arr.push(minValue)              //从小到大
+//         sort(number)
+//         // return arr.push(minValue)    //从大到小
+//     }else{
+//        return arr.push(number[0])
+//     }
+// return arr
+// }
+// sort([1,4,266,999,75,76,97,100])
+
+
+//方法二 不多创建一个变量arr,我们通过concat链接他们组成一个新数组
 const sort=(number)=> {
-    if (number.length > 1) {
-        let minValue = min(number);
+    if (number.length > 2) {
+        let minValue = min(number)
         let minIndex = index(minValue, number)
         number.splice(minIndex, 1)
-        arr.push(minValue)              //从小到大
-        sort(number)
-        // return arr.push(minValue)    //从大到小
+        return [minValue].concat(sort(number))
     }else{
-       return arr.push(number[0])
+        return reverse(number)
     }
-return arr
 }
 sort([1,4,266,999,75,76,97,100])
-
-
-//方法二
