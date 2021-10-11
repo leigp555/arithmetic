@@ -194,7 +194,11 @@ var sort = function sort(number) {
 }; // console.log(sort([1, 4, 266, 999, 75, 76, 97, 100]));
 
 
+var n = 0;
+
 var cat = function cat(number) {
+  n += 1;
+
   if (number.length > 2) {
     return cat([number[0], cat(number.slice(1))]);
   } else {
