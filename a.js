@@ -7,7 +7,7 @@ const order = (number, array) => {
     }
 }
 
-// order(3,[1,2,3,4,5,6])
+order(3,[1,2,3,4,5,6])
 
 function result(number) {
     return number[0] > number[1] ? number[1] : number[0]
@@ -45,7 +45,7 @@ const sort = (number) => {
         return number[1] > number[0] ? number : number.reverse()
     }
 }
-// sort([4, 6, 8, 3, 2, 7])
+sort([4, 6, 8, 3, 2, 7])
 
 
 //选择排序循环改写
@@ -61,7 +61,7 @@ const count = (number) => {
     }
     return number
 }
-// count([5, 4, 3, 2, 6, 1, 7])
+count([5, 4, 3, 2, 6, 1, 7])
 
 //选择排序循环改写二
 const index = (number) => {
@@ -149,6 +149,11 @@ const countSoft = (number) => {
 }
 
 countSoft([3, 4, 6, 2])
+
+
+
+
+//对列
 
 
 

@@ -117,33 +117,65 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"main.js":[function(require,module,exports) {
-var get = document.querySelector("#get");
-var call = document.querySelector("#call");
-var now = document.querySelector("#now");
-var all = document.querySelector("#all");
-var screen = document.querySelector("#screen");
-var n = 0;
-var array = [];
+})({"tree.js":[function(require,module,exports) {
+var createNode = function createNode(value) {
+  return {
+    date: value,
+    children: null,
+    parent: null
+  };
+}; //添加一个子节点
 
-get.onclick = function () {
-  n = n + 1;
-  array.push(n);
-  now.innerText = n;
-  all.innerText = JSON.stringify(array);
-};
 
-call.onclick = function () {
-  var x = array.shift();
-  all.innerText = JSON.stringify(array);
+var addNode = function addNode(node, newNode) {
+  node.children = node.children || [];
+  node.children.push(newNode);
+  newNode.parent = node;
+}; //遍历
 
-  if (x !== undefined) {
-    screen.innerText = "\u8BF7".concat(x, "\u53F7\u5C31\u9910");
-  } else {
-    alert("没有客人啦");
+
+var eachNode = function eachNode(tree, fn) {
+  fn(tree);
+
+  if (!tree.children) {
+    return;
   }
+
+  for (var i = 0; i < tree.children.length; i++) {
+    eachNode(tree.children[i], fn);
+  }
+}; //删除节点
+
+
+var removeNode = function removeNode(tree, node) {
+  var siblings = node.parent.children;
+  var index = 0;
+
+  for (var i = 0; i < siblings.length; i++) {
+    if (siblings[i] === node) {
+      index = i;
+    }
+  }
+
+  siblings.splice(index, 1);
 };
-},{}],"../../../AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+
+var a = createNode(10);
+var b = createNode(20);
+var c = createNode(30);
+var d = createNode(40);
+var e = createNode(100);
+var f = createNode(200);
+var g = createNode(300);
+addNode(a, b);
+addNode(a, c);
+addNode(a, d);
+addNode(b, e);
+addNode(b, f);
+addNode(b, g);
+console.log(a);
+removeNode(a, e);
+},{}],"../../../../../AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -171,7 +203,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54579" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62258" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -347,5 +379,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js","main.js"], null)
-//# sourceMappingURL=/main.1f19ae8e.js.map
+},{}]},{},["../../../../../AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js","tree.js"], null)
+//# sourceMappingURL=/tree.ee3f47e3.js.map

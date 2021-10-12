@@ -1,0 +1,15 @@
+#screen {
+    border: 1px solid red;
+    width: 20vw;
+    height: 20vw;
+
+}
+
+.span>div{
+    display: inline;
+}
+.span>span{
+    display: inline;
+}
+
+/*# sourceMappingURL=/main.af46ece4.css.map */
